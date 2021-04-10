@@ -7,7 +7,7 @@ namespace BagKata;
 class Category
 {
     private ?string $name;
-    private array $itemsInCategory = [
+    private const ITEMS_IN_CATEGORY = [
         'Leather' => 'Clothes',
         'Linen' => 'Clothes',
         'Silk' => 'Clothes',
@@ -38,6 +38,6 @@ class Category
 
     public function belongsTo(string $item):bool
     {
-        return $this->itemsInCategory[$item] === $this->name();
+        return self::ITEMS_IN_CATEGORY[$item] === $this->name();
     }
 }
