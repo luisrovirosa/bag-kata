@@ -15,7 +15,7 @@ class BagKata
 
     public function add(string $item): void
     {
-        $this->addItem($item, fn (string $item) => $this->findBag($item));
+        $this->addItem($item, fn (string $item) => $this->findNotFullBag());
     }
 
     public function organize(): void

@@ -137,7 +137,6 @@ class BagKataTest extends TestCase
     /** @test */
     public function items_are_not_organized_when_are_placed(): void
     {
-        $this->markTestIncomplete('Not yet');
         $bag = Bag::categoryBag('Clothes');
         $bagKata = new BagKata($bag);
 
@@ -155,6 +154,9 @@ class BagKataTest extends TestCase
         for ($i = 0; $i < 5; $i++) {
             $bagKata->add('Gold');
         }
+
+        $bagKata->organize();
+
         self::assertEquals(['Gold', 'Gold', 'Gold','Gold'], $bag->items());
         self::assertEquals(['Gold'], $bagKata->backpackItems());
     }
