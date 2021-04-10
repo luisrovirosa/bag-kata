@@ -1,0 +1,19 @@
+{
+    "name": "luisrovirosa/bag-kata",
+    "authors": [
+        {
+            "name": "Luis Rovirosa Mairlot",
+            "email": "luis@codium.team"
+        }
+    ],
+    "require": {
+        "php": "^8",
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "BagKata\\": "src",
+            "BagKata\\Test\\": "tests"
+        }
+    }
+}
