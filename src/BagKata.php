@@ -20,4 +20,9 @@ class BagKata
     {
         return $this->items;
     }
+
+    public function organize(): void
+    {
+        sort($this->items);
+    }
 }
