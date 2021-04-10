@@ -34,11 +34,6 @@ class Bag
 
     }
 
-    public function fillWith(array $items): void
-    {
-        array_walk($items, fn ($item) => $this->add($item));
-    }
-
     #[Pure]
     public function isFull(): bool
     {

@@ -36,14 +36,23 @@ class BagKata
 
     public function organize(): void
     {
-        $items = array_merge(...array_map(fn (Bag $bag): array => $bag->empty(), $this->bags));
+        $items = $this->emptyBags();
         sort($items);
-
-        array_walk($items, fn ($item) => $this->add($item));
+        $this->addAll($items);
     }
 
     private function backpack(): BackPack
     {
         return $this->bags[0];
+    }
+
+    private function emptyBags(): array
+    {
+        return array_merge(...array_map(fn (Bag $bag): array => $bag->empty(), $this->bags));
+    }
+
+    private function addAll(array $items): void
+    {
+        array_walk($items, fn ($item) => $this->add($item));
     }
 }
