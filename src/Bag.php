@@ -37,6 +37,21 @@ class Bag
         $this->capacity = 4;
     }
 
+    public static function newBackpack(): Bag
+    {
+        return new BackPack();
+    }
+
+    public static function categoryBag(string $category): Bag
+    {
+        return new self($category);
+    }
+
+    public static function genericBag(): Bag
+    {
+        return new self(null);
+    }
+
     public function add(string $item): void
     {
         $this->items[] = $item;

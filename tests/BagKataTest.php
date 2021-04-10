@@ -57,7 +57,7 @@ class BagKataTest extends TestCase
     /** @test */
     public function extra_bags_are_filled_when_backpack_is_full(): void
     {
-        $bag = new Bag(null);
+        $bag = Bag::genericBag();
         $bagKata = new BagKata($bag);
         for ($i = 0; $i < 8; $i++) {
             $bagKata->add('Leather');
@@ -83,7 +83,7 @@ class BagKataTest extends TestCase
     /** @test */
     public function items_are_ordered_alphabetically_inside_all_bags_when_the_spell_is_casted(): void
     {
-        $bag = new Bag(null);
+        $bag = Bag::genericBag();
         $bagKata = new BagKata($bag);
         for ($i = 0; $i < 8; $i++) {
             $bagKata->add('Leather');
@@ -101,7 +101,7 @@ class BagKataTest extends TestCase
      */
     public function items_are_organized_inside_their_category_bag(string $item, string $category): void
     {
-        $bag = new Bag($category);
+        $bag = Bag::categoryBag($category);
         $bagKata = new BagKata($bag);
         $bagKata->add($item);
 
@@ -136,7 +136,7 @@ class BagKataTest extends TestCase
     /** @test */
     public function extra_bags_can_contain_up_to_4_items(): void
     {
-        $bag = new Bag('Metals');
+        $bag = Bag::categoryBag('Metals');
         $bagKata = new BagKata($bag);
         for ($i = 0; $i < 5; $i++) {
             $bagKata->add('Gold');

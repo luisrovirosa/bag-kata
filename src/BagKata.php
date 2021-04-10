@@ -13,7 +13,7 @@ class BagKata
     public function __construct(
         Bag ...$bags
     ) {
-        $this->bags = [new BackPack(), ...$bags];
+        $this->bags = [Bag::newBackpack(), ...$bags];
     }
 
     public function add(string $item): void
