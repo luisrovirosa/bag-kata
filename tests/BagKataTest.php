@@ -115,6 +115,21 @@ class BagKataTest extends TestCase
     {
         return[
             ['Leather', 'Clothes'],
+            ['Linen' , 'Clothes'],
+            ['Silk' , 'Clothes'],
+            ['Wool' , 'Clothes'],
+            ['Copper' , 'Metals'],
+            ['Gold' , 'Metals'],
+            ['Iron' , 'Metals'],
+            ['Silver' , 'Metals'],
+            ['Axe' , 'Weapons'],
+            ['Dagger' , 'Weapons'],
+            ['Mace' , 'Weapons'],
+            ['Sword' , 'Weapons'],
+            ['Cherry Blossom' , 'Herbs'],
+            ['Marigold' , 'Herbs'],
+            ['Rose' , 'Herbs'],
+            ['Seaweed' , 'Herbs'],
         ];
     }
 }
