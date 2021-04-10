@@ -30,7 +30,7 @@ class Bag
     ];
     protected int $capacity;
 
-    public function __construct(?string $category)
+    protected function __construct(?string $category)
     {
         $this->items = [];
         $this->category = $category;
