@@ -30,11 +30,11 @@ class Bag
     ];
     protected int $capacity;
 
-    protected function __construct(?string $category)
+    protected function __construct(?string $category, int $capacity)
     {
         $this->items = [];
         $this->category = $category;
-        $this->capacity = 4;
+        $this->capacity = $capacity;
     }
 
     public static function newBackpack(): Bag
@@ -44,12 +44,12 @@ class Bag
 
     public static function categoryBag(string $category): Bag
     {
-        return new self($category);
+        return new self($category, 4);
     }
 
     public static function genericBag(): Bag
     {
-        return new self(null);
+        return new self(null, 4);
     }
 
     public function add(string $item): void
