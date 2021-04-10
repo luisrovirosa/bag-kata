@@ -4,8 +4,11 @@
 # My rules
 - Strict TDD outside-in classical style
 
-# Decissions I made
- 
+# Classes
+- [BagKata](src/BagKata.php): Add items and knows how to organize them.
+- [Bag](src/Bag.php): Logic that stores, retrieves and knows if is the best bag to put an item.
+- [Category](src/Category.php): Relation between items and categories.
+
 # Kata
 [Bags Kata](https://github.com/pepperrone/katas/blob/master/katas/bags.md) by [Giulio Perrone](https://github.com/pepperrone)
 
