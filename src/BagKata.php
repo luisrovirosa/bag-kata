@@ -42,7 +42,7 @@ class BagKata
 
     private function addAll(array $items): void
     {
-        array_walk($items, fn ($item) => $this->add($item));
+        array_walk($items, fn ($item) => $this->addItem($item, fn (string $item) => $this->findBag($item)));
     }
 
     private function findBag(string $item): ?Bag
@@ -68,6 +68,7 @@ class BagKata
                 return $bag;
             }
         }
+
         return null;
     }
 
