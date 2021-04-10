@@ -7,7 +7,7 @@ namespace BagKata;
 class Bag
 {
     private array $items;
-    private ?string $category;
+    private Category $category;
     private array $itemCategory = [
         'Leather' => 'Clothes',
         'Linen' => 'Clothes',
@@ -31,7 +31,7 @@ class Bag
     protected function __construct(?string $category, int $capacity)
     {
         $this->items = [];
-        $this->category = $category;
+        $this->category = new Category($category);
         $this->capacity = $capacity;
     }
 
@@ -75,6 +75,6 @@ class Bag
 
     public function isPreferredItem(string $item): bool
     {
-        return $this->itemCategory[$item] === $this->category;
+        return $this->itemCategory[$item] === $this->category->name();
     }
 }
