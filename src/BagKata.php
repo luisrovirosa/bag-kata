@@ -13,7 +13,11 @@ class BagKata
 
     public function add(string $item): void
     {
-        $this->items[] = $item;
+        if (count($this->items) < 8) {
+            $this->items[] = $item;
+        } else {
+            throw new FullBackException();
+        }
     }
 
     public function backpack(): array

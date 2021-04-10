@@ -3,6 +3,7 @@
 namespace BagKata\Test;
 
 use BagKata\BagKata;
+use BagKata\FullBackException;
 use PHPUnit\Framework\TestCase;
 
 class BagKataTest extends TestCase
@@ -24,7 +25,7 @@ class BagKataTest extends TestCase
     {
         return [
             ['Leather'],
-            ['Linen']
+            ['Linen'],
         ];
     }
 
@@ -37,6 +38,19 @@ class BagKataTest extends TestCase
         $bagKata->add('Axe');
 
         self::assertEquals(['Leather', 'Axe'], $bagKata->backpack());
+    }
+
+    /** @test */
+    public function backpack_can_have_up_to_8_items(): void
+    {
+        $bagKata = new BagKata();
+        for ($i = 0; $i < 8; $i++) {
+            $bagKata->add('Leather');
+        }
+
+        $this->expectException(FullBackException::class);
+
+        $bagKata->add('Axe');
     }
 
     /** @test */
