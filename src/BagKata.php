@@ -39,7 +39,7 @@ class BagKata
     {
         $bag = $findMethod($item);
         if (!$bag) {
-            throw new FullBackException();
+            throw new FullBagException();
         }
 
         $bag->add($item);

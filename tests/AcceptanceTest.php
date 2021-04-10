@@ -4,7 +4,7 @@ namespace BagKata\Test;
 
 use BagKata\Bag;
 use BagKata\BagKata;
-use BagKata\FullBackException;
+use BagKata\FullBagException;
 use PHPUnit\Framework\TestCase;
 
 class AcceptanceTest extends TestCase

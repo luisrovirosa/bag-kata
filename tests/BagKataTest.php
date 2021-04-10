@@ -4,7 +4,7 @@ namespace BagKata\Test;
 
 use BagKata\Bag;
 use BagKata\BagKata;
-use BagKata\FullBackException;
+use BagKata\FullBagException;
 use PHPUnit\Framework\TestCase;
 
 class BagKataTest extends TestCase
@@ -49,7 +49,7 @@ class BagKataTest extends TestCase
             $bagKata->add('Leather');
         }
 
-        $this->expectException(FullBackException::class);
+        $this->expectException(FullBagException::class);
 
         $bagKata->add('Axe');
     }
