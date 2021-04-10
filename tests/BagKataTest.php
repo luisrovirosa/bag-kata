@@ -69,7 +69,7 @@ class BagKataTest extends TestCase
     }
 
     /** @test */
-    public function items_are_ordered_alphabetically_inside_the_bag_when_the_spell_is_casted(): void
+    public function items_are_ordered_alphabetically_inside_the_backpack_when_the_spell_is_casted(): void
     {
         $bagKata = new BagKata();
         $bagKata->add('Leather');
