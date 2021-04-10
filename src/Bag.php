@@ -8,24 +8,6 @@ class Bag
 {
     private array $items;
     private Category $category;
-    private array $itemCategory = [
-        'Leather' => 'Clothes',
-        'Linen' => 'Clothes',
-        'Silk' => 'Clothes',
-        'Wool' => 'Clothes',
-        'Copper' => 'Metals',
-        'Gold' => 'Metals',
-        'Iron' => 'Metals',
-        'Silver' => 'Metals',
-        'Axe' => 'Weapons',
-        'Dagger' => 'Weapons',
-        'Mace' => 'Weapons',
-        'Sword' => 'Weapons',
-        'Cherry Blossom' => 'Herbs',
-        'Marigold' => 'Herbs',
-        'Rose' => 'Herbs',
-        'Seaweed' => 'Herbs',
-    ];
     protected int $capacity;
 
     protected function __construct(?string $category, int $capacity)
@@ -75,6 +57,6 @@ class Bag
 
     public function isPreferredItem(string $item): bool
     {
-        return $this->itemCategory[$item] === $this->category->name();
+        return $this->category->belongsTo($item);
     }
 }
