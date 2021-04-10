@@ -8,10 +8,12 @@ use PHPUnit\Framework\TestCase;
 class BagKataTest extends TestCase
 {
     /** @test */
-    public function xxx()
+    public function items_can_be_added(): void
     {
-        new BagKata();
+        $bagKata = new BagKata();
 
-        self::assertEquals(true, true);
+        $bagKata->add('Leather');
+
+        self::assertEquals(['Leather'], $bagKata->backpack());
     }
 }
