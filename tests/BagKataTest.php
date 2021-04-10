@@ -79,4 +79,19 @@ class BagKataTest extends TestCase
 
         self::assertEquals(['Axe', 'Leather'], $bagKata->backpackItems());
     }
+
+    /** @test */
+    public function items_are_ordered_alphabetically_inside_all_bags_when_the_spell_is_casted(): void
+    {
+        $bag = new Bag();
+        $bagKata = new BagKata($bag);
+        for ($i = 0; $i < 8; $i++) {
+            $bagKata->add('Leather');
+        }
+        $bagKata->add('Axe');
+
+        $bagKata->organize();
+
+        self::assertEquals(['Leather'], $bag->items());
+    }
 }
