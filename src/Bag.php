@@ -9,10 +9,17 @@ use JetBrains\PhpStorm\Pure;
 class Bag
 {
     private array $items;
+    private ?string $category;
+    private array $itemCategory = [
+        'Leather' => 'Clothes',
+        'Linen' => 'Clothes',
+        'Axe' => 'Weapons',
+    ];
 
-    public function __construct()
+    public function __construct(?string $category)
     {
         $this->items = [];
+        $this->category = $category;
     }
 
     public function add(string $item): void
@@ -31,12 +38,16 @@ class Bag
         $this->items = [];
 
         return $items;
-
     }
 
     #[Pure]
     public function isFull(): bool
     {
         return count($this->items()) >= 8;
+    }
+
+    public function isPreferredItem(string $item): bool
+    {
+        return $this->itemCategory[$item] === $this->category;
     }
 }

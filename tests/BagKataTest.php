@@ -57,7 +57,7 @@ class BagKataTest extends TestCase
     /** @test */
     public function extra_bags_are_filled_when_backpack_is_full(): void
     {
-        $bag = new Bag();
+        $bag = new Bag(null);
         $bagKata = new BagKata($bag);
         for ($i = 0; $i < 8; $i++) {
             $bagKata->add('Leather');
@@ -83,7 +83,7 @@ class BagKataTest extends TestCase
     /** @test */
     public function items_are_ordered_alphabetically_inside_all_bags_when_the_spell_is_casted(): void
     {
-        $bag = new Bag();
+        $bag = new Bag(null);
         $bagKata = new BagKata($bag);
         for ($i = 0; $i < 8; $i++) {
             $bagKata->add('Leather');
@@ -93,5 +93,18 @@ class BagKataTest extends TestCase
         $bagKata->organize();
 
         self::assertEquals(['Leather'], $bag->items());
+    }
+
+    /** @test */
+    public function items_are_organized_inside_their_category_bag(): void
+    {
+        $bag = new Bag('Clothes');
+        $bagKata = new BagKata($bag);
+        $bagKata->add('Leather');
+
+        $bagKata->organize();
+
+        self::assertEquals(['Leather'], $bag->items());
+        self::assertEmpty($bagKata->backpackItems());
     }
 }

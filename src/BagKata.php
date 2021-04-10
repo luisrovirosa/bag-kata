@@ -13,11 +13,18 @@ class BagKata
     public function __construct(
         Bag ...$bags
     ) {
-        $this->bags = [new BackPack(), ...$bags];
+        $this->bags = [new BackPack(null), ...$bags];
     }
 
     public function add(string $item): void
     {
+        foreach ($this->bags as $bag) {
+            if ($bag->isPreferredItem($item)) {
+                $bag->add($item);
+
+                return;
+            }
+        }
         foreach ($this->bags as $bag) {
             if (!$bag->isFull()) {
                 $bag->add($item);
