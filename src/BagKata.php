@@ -15,12 +15,7 @@ class BagKata
 
     public function add(string $item): void
     {
-        $bag = $this->findBag($item);
-        if (!$bag) {
-            throw new FullBackException();
-        }
-
-        $bag->add($item);
+        $this->addItem($item, fn (string $item) => $this->findBag($item));
     }
 
     public function organize(): void
@@ -74,5 +69,15 @@ class BagKata
             }
         }
         return null;
+    }
+
+    private function addItem(string $item, \Closure $findMethod): void
+    {
+        $bag = $findMethod($item);
+        if (!$bag) {
+            throw new FullBackException();
+        }
+
+        $bag->add($item);
     }
 }
