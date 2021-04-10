@@ -7,13 +7,23 @@ use PHPUnit\Framework\TestCase;
 
 class BagKataTest extends TestCase
 {
-    /** @test */
-    public function items_can_be_added(): void
+    /**
+     * @test
+     * @dataProvider validItems
+     */
+    public function items_can_be_added($item): void
     {
         $bagKata = new BagKata();
 
-        $bagKata->add('Leather');
+        $bagKata->add($item);
 
-        self::assertEquals(['Leather'], $bagKata->backpack());
+        self::assertEquals([$item], $bagKata->backpack());
+    }
+
+    public function validItems(): array
+    {
+        return [
+            ['Leather']
+        ];
     }
 }
