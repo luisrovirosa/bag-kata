@@ -28,11 +28,13 @@ class Bag
         'Rose' => 'Herbs',
         'Seaweed' => 'Herbs',
     ];
+    protected int $capacity;
 
     public function __construct(?string $category)
     {
         $this->items = [];
         $this->category = $category;
+        $this->capacity = 4;
     }
 
     public function add(string $item): void
@@ -56,7 +58,7 @@ class Bag
     #[Pure]
     public function isFull(): bool
     {
-        return count($this->items()) >= 4;
+        return count($this->items()) >= $this->capacity;
     }
 
     public function isPreferredItem(string $item): bool
