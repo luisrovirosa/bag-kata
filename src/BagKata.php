@@ -30,14 +30,19 @@ class BagKata
         return $this->bags[0]->items();
     }
 
-    private function clearBags(): array
-    {
-        return array_merge(...array_map(fn (Bag $bag): array => $bag->empty(), $this->bags));
-    }
-
     private function addAll(array $items): void
     {
         array_walk($items, fn ($item) => $this->addItem($item, fn (string $item) => $this->findBag($item)));
+    }
+
+    private function addItem(string $item, \Closure $findMethod): void
+    {
+        $bag = $findMethod($item);
+        if (!$bag) {
+            throw new FullBackException();
+        }
+
+        $bag->add($item);
     }
 
     private function findBag(string $item): ?Bag
@@ -67,13 +72,8 @@ class BagKata
         return null;
     }
 
-    private function addItem(string $item, \Closure $findMethod): void
+    private function clearBags(): array
     {
-        $bag = $findMethod($item);
-        if (!$bag) {
-            throw new FullBackException();
-        }
-
-        $bag->add($item);
+        return array_merge(...array_map(fn (Bag $bag): array => $bag->empty(), $this->bags));
     }
 }
