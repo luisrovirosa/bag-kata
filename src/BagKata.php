@@ -32,16 +32,16 @@ class BagKata
         throw new FullBackException();
     }
 
-    public function backpackItems(): array
-    {
-        return $this->backpack()->items();
-    }
-
     public function organize(): void
     {
         $items = $this->emptyBags();
         sort($items);
         $this->addAll($items);
+    }
+
+    public function backpackItems(): array
+    {
+        return $this->backpack()->items();
     }
 
     private function backpack(): Bag
