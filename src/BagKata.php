@@ -22,7 +22,7 @@ class BagKata
     {
         $items = $this->clearBags();
         sort($items);
-        $this->addAll($items);
+        $this->addAllInPlace($items);
     }
 
     public function backpackItems(): array
@@ -30,7 +30,7 @@ class BagKata
         return $this->bags[0]->items();
     }
 
-    private function addAll(array $items): void
+    private function addAllInPlace(array $items): void
     {
         array_walk($items, fn ($item) => $this->addItem($item, fn (string $item) => $this->findBag($item)));
     }
