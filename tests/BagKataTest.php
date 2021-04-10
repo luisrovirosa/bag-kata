@@ -27,4 +27,15 @@ class BagKataTest extends TestCase
             ['Linen']
         ];
     }
+
+    /** @test */
+    public function more_than_one_item_can_be_added(): void
+    {
+        $bagKata = new BagKata();
+
+        $bagKata->add('Leather');
+        $bagKata->add('Axe');
+
+        self::assertEquals(['Leather', 'Axe'], $bagKata->backpack());
+    }
 }
