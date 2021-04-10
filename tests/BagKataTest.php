@@ -95,16 +95,26 @@ class BagKataTest extends TestCase
         self::assertEquals(['Leather'], $bag->items());
     }
 
-    /** @test */
-    public function items_are_organized_inside_their_category_bag(): void
+    /**
+     * @test
+     * @dataProvider itemsAndCategories
+     */
+    public function items_are_organized_inside_their_category_bag(string $item, string $category): void
     {
-        $bag = new Bag('Clothes');
+        $bag = new Bag($category);
         $bagKata = new BagKata($bag);
-        $bagKata->add('Leather');
+        $bagKata->add($item);
 
         $bagKata->organize();
 
-        self::assertEquals(['Leather'], $bag->items());
+        self::assertEquals([$item], $bag->items());
         self::assertEmpty($bagKata->backpackItems());
+    }
+
+    public function itemsAndCategories()
+    {
+        return[
+            ['Leather', 'Clothes'],
+        ];
     }
 }
