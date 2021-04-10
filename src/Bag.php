@@ -56,7 +56,7 @@ class Bag
     #[Pure]
     public function isFull(): bool
     {
-        return count($this->items()) >= 8;
+        return count($this->items()) >= 4;
     }
 
     public function isPreferredItem(string $item): bool

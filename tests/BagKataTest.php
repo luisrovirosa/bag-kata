@@ -113,23 +113,35 @@ class BagKataTest extends TestCase
 
     public function itemsAndCategories()
     {
-        return[
+        return [
             ['Leather', 'Clothes'],
-            ['Linen' , 'Clothes'],
-            ['Silk' , 'Clothes'],
-            ['Wool' , 'Clothes'],
-            ['Copper' , 'Metals'],
-            ['Gold' , 'Metals'],
-            ['Iron' , 'Metals'],
-            ['Silver' , 'Metals'],
-            ['Axe' , 'Weapons'],
-            ['Dagger' , 'Weapons'],
-            ['Mace' , 'Weapons'],
-            ['Sword' , 'Weapons'],
-            ['Cherry Blossom' , 'Herbs'],
-            ['Marigold' , 'Herbs'],
-            ['Rose' , 'Herbs'],
-            ['Seaweed' , 'Herbs'],
+            ['Linen', 'Clothes'],
+            ['Silk', 'Clothes'],
+            ['Wool', 'Clothes'],
+            ['Copper', 'Metals'],
+            ['Gold', 'Metals'],
+            ['Iron', 'Metals'],
+            ['Silver', 'Metals'],
+            ['Axe', 'Weapons'],
+            ['Dagger', 'Weapons'],
+            ['Mace', 'Weapons'],
+            ['Sword', 'Weapons'],
+            ['Cherry Blossom', 'Herbs'],
+            ['Marigold', 'Herbs'],
+            ['Rose', 'Herbs'],
+            ['Seaweed', 'Herbs'],
         ];
+    }
+
+    /** @test */
+    public function extra_bags_can_contain_up_to_4_items(): void
+    {
+        $bag = new Bag('Metals');
+        $bagKata = new BagKata($bag);
+        for ($i = 0; $i < 5; $i++) {
+            $bagKata->add('Gold');
+        }
+        self::assertEquals(['Gold', 'Gold', 'Gold','Gold'], $bag->items());
+        self::assertEquals(['Gold'], $bagKata->backpackItems());
     }
 }

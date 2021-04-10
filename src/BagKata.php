@@ -19,7 +19,7 @@ class BagKata
     public function add(string $item): void
     {
         foreach ($this->bags as $bag) {
-            if ($bag->isPreferredItem($item)) {
+            if ($bag->isPreferredItem($item) && !$bag->isFull()) {
                 $bag->add($item);
 
                 return;
