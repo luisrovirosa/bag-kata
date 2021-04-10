@@ -6,6 +6,7 @@ use JetBrains\PhpStorm\Pure;
 
 class BagKata
 {
+    /** @var Bag[] */
     private array $bags;
 
     #[Pure]
@@ -17,7 +18,6 @@ class BagKata
 
     public function add(string $item): void
     {
-        /** @var Bag $bag */
         foreach ($this->bags as $bag) {
             if (!$bag->isFull()) {
                 $bag->add($item);
