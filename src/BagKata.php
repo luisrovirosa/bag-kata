@@ -20,7 +20,7 @@ class BagKata
 
     public function organize(): void
     {
-        $items = $this->emptyBags();
+        $items = $this->clearBags();
         sort($items);
         $this->addAll($items);
     }
@@ -35,7 +35,7 @@ class BagKata
         return $this->bags[0];
     }
 
-    private function emptyBags(): array
+    private function clearBags(): array
     {
         return array_merge(...array_map(fn (Bag $bag): array => $bag->empty(), $this->bags));
     }
