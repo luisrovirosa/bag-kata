@@ -2,10 +2,13 @@
 
 namespace BagKata;
 
+use JetBrains\PhpStorm\Pure;
+
 class BagKata
 {
     private Backpack $backpack;
 
+    #[Pure]
     public function __construct()
     {
         $this->backpack = new Backpack();
