@@ -2,14 +2,11 @@
 
 namespace BagKata;
 
-use JetBrains\PhpStorm\Pure;
-
 class BagKata
 {
     /** @var Bag[] */
     private array $bags;
 
-    #[Pure]
     public function __construct(
         Bag ...$bags
     ) {
@@ -35,7 +32,6 @@ class BagKata
         throw new FullBackException();
     }
 
-    #[Pure]
     public function backpackItems(): array
     {
         return $this->backpack()->items();
@@ -48,7 +44,7 @@ class BagKata
         $this->addAll($items);
     }
 
-    private function backpack(): BackPack
+    private function backpack(): Bag
     {
         return $this->bags[0];
     }

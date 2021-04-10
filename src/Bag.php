@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace BagKata;
 
-use JetBrains\PhpStorm\Pure;
-
 class Bag
 {
     private array $items;
@@ -39,7 +37,7 @@ class Bag
 
     public static function newBackpack(): Bag
     {
-        return new BackPack();
+        return new self(null, 8);
     }
 
     public static function categoryBag(string $category): Bag
@@ -70,7 +68,6 @@ class Bag
         return $items;
     }
 
-    #[Pure]
     public function isFull(): bool
     {
         return count($this->items()) >= $this->capacity;
