@@ -13,7 +13,7 @@ class BagKata
 
     public function add(string $item): void
     {
-        if (count($this->backpack->items()) >= 8) {
+        if ($this->backpack->isFull()) {
             throw new FullBackException();
         }
         $this->backpack->add($item);

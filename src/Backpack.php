@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace BagKata;
 
+use JetBrains\PhpStorm\Pure;
+
 class Backpack
 {
     private array $items;
@@ -13,7 +15,7 @@ class Backpack
         $this->items = [];
     }
 
-    public function add(string $item)
+    public function add(string $item): void
     {
         $this->items[] = $item;
     }
@@ -35,5 +37,11 @@ class Backpack
     public function fillWith(array $items): void
     {
         array_map(fn ($item) => $this->items[] = $item, $items);
+    }
+
+    #[Pure]
+    public function isFull(): bool
+    {
+        return count($this->items()) >= 8;
     }
 }
