@@ -4,13 +4,11 @@ namespace BagKata;
 
 class BagKata
 {
-    private array $items;
     private Backpack $backpack;
 
     public function __construct()
     {
         $this->backpack = new Backpack();
-        $this->items = [];
     }
 
     public function add(string $item): void
@@ -19,8 +17,6 @@ class BagKata
             throw new FullBackException();
         }
         $this->backpack->add($item);
-
-        $this->items[] = $item;
     }
 
     public function backpack(): array
