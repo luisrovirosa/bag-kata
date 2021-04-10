@@ -2,6 +2,7 @@
 
 namespace BagKata\Test;
 
+use BagKata\Bag;
 use BagKata\BagKata;
 use BagKata\FullBackException;
 use PHPUnit\Framework\TestCase;
@@ -51,6 +52,20 @@ class BagKataTest extends TestCase
         $this->expectException(FullBackException::class);
 
         $bagKata->add('Axe');
+    }
+
+    /** @test */
+    public function extra_bags_are_filled_when_backpack_is_full(): void
+    {
+        $bag = new Bag();
+        $bagKata = new BagKata($bag);
+        for ($i = 0; $i < 8; $i++) {
+            $bagKata->add('Leather');
+        }
+
+        $bagKata->add('Axe');
+
+        self::assertEquals(['Axe'], $bag->items());
     }
 
     /** @test */

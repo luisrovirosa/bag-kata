@@ -7,19 +7,27 @@ use JetBrains\PhpStorm\Pure;
 class BagKata
 {
     private Bag $backpack;
+    private array $bags;
 
     #[Pure]
-    public function __construct()
-    {
+    public function __construct(
+        Bag ...$bags
+    ) {
         $this->backpack = new BackPack();
+        $this->bags = $bags;
     }
 
     public function add(string $item): void
     {
-        if ($this->backpack->isFull()) {
-            throw new FullBackException();
+        /** @var Bag $bag */
+        foreach ([$this->backpack, ...$this->bags] as $bag) {
+            if (!$bag->isFull()) {
+                $bag->add($item);
+
+                return;
+            }
         }
-        $this->backpack->add($item);
+        throw new FullBackException();
     }
 
     public function backpack(): array
