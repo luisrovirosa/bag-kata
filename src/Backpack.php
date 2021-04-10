@@ -36,7 +36,7 @@ class Backpack
 
     public function fillWith(array $items): void
     {
-        array_map(fn ($item) => $this->add($item), $items);
+        array_walk($items, fn ($item) => $this->add($item));
     }
 
     #[Pure]
