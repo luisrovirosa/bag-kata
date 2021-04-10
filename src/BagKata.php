@@ -27,12 +27,7 @@ class BagKata
 
     public function backpackItems(): array
     {
-        return $this->backpack()->items();
-    }
-
-    private function backpack(): Bag
-    {
-        return $this->bags[0];
+        return $this->bags[0]->items();
     }
 
     private function clearBags(): array
