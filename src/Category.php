@@ -31,13 +31,8 @@ class Category
         $this->name = $name;
     }
 
-    public function name(): ?string
-    {
-        return $this->name;
-    }
-
     public function belongsTo(string $item):bool
     {
-        return self::ITEMS_IN_CATEGORY[$item] === $this->name();
+        return self::ITEMS_IN_CATEGORY[$item] === $this->name;
     }
 }
