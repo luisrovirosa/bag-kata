@@ -6,4 +6,8 @@ namespace BagKata;
 
 class BackPack extends Bag
 {
+    public function __construct()
+    {
+        parent::__construct(null);
+    }
 }
