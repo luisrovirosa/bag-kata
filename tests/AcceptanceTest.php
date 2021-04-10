@@ -12,7 +12,6 @@ class AcceptanceTest extends TestCase
     /** @test */
     public function the_example_provided_works_as_expected(): void
     {
-        $this->markTestIncomplete('Not yet');
         $bag = new Bag('Metals');
         $bagKata = new BagKata($bag);
         $bagKata->add('Leather');
