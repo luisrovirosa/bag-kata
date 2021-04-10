@@ -15,21 +15,12 @@ class BagKata
 
     public function add(string $item): void
     {
-        foreach ($this->bags as $bag) {
-            if ($bag->isPreferredItem($item) && !$bag->isFull()) {
-                $bag->add($item);
-
-                return;
-            }
+        $bag = $this->findBag($item);
+        if (!$bag) {
+            throw new FullBackException();
         }
-        foreach ($this->bags as $bag) {
-            if (!$bag->isFull()) {
-                $bag->add($item);
 
-                return;
-            }
-        }
-        throw new FullBackException();
+        $bag->add($item);
     }
 
     public function organize(): void
@@ -57,5 +48,20 @@ class BagKata
     private function addAll(array $items): void
     {
         array_walk($items, fn ($item) => $this->add($item));
+    }
+
+    private function findBag(string $item): ?Bag
+    {
+        foreach ($this->bags as $bag) {
+            if ($bag->isPreferredItem($item) && !$bag->isFull()) {
+                return $bag;
+            }
+        }
+        foreach ($this->bags as $bag) {
+            if (!$bag->isFull()) {
+                return $bag;
+            }
+        }
+        return null;
     }
 }
