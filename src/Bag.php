@@ -55,7 +55,7 @@ class Bag
         return $this->items;
     }
 
-    public function isPreferredItem(string $item): bool
+    public function isFromSameCategory(string $item): bool
     {
         return $this->category->belongsTo($item);
     }

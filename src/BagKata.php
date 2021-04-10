@@ -53,7 +53,7 @@ class BagKata
     private function findCategoryBag(string $item): ?Bag
     {
         foreach ($this->bags as $bag) {
-            if ($bag->isPreferredItem($item) && !$bag->isFull()) {
+            if ($bag->isFromSameCategory($item) && !$bag->isFull()) {
                 return $bag;
             }
         }
