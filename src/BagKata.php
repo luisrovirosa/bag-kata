@@ -6,12 +6,12 @@ use JetBrains\PhpStorm\Pure;
 
 class BagKata
 {
-    private Backpack $backpack;
+    private Bag $backpack;
 
     #[Pure]
     public function __construct()
     {
-        $this->backpack = new Backpack();
+        $this->backpack = new BackPack();
     }
 
     public function add(string $item): void

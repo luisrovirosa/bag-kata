@@ -6,7 +6,7 @@ namespace BagKata;
 
 use JetBrains\PhpStorm\Pure;
 
-class Backpack
+class Bag
 {
     private array $items;
 
