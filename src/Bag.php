@@ -6,9 +6,9 @@ namespace BagKata;
 
 class Bag
 {
+    private int $capacity;
     private array $items;
     private Category $category;
-    protected int $capacity;
 
     private function __construct(?string $category, int $capacity)
     {
@@ -37,11 +37,6 @@ class Bag
         $this->items[] = $item;
     }
 
-    public function items(): array
-    {
-        return $this->items;
-    }
-
     public function empty(): array
     {
         $items = $this->items;
@@ -53,6 +48,11 @@ class Bag
     public function isFull(): bool
     {
         return count($this->items()) >= $this->capacity;
+    }
+
+    public function items(): array
+    {
+        return $this->items;
     }
 
     public function isPreferredItem(string $item): bool
