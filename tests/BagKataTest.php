@@ -19,7 +19,7 @@ class BagKataTest extends TestCase
 
         $bagKata->add($item);
 
-        self::assertEquals([$item], $bagKata->backpack());
+        self::assertEquals([$item], $bagKata->backpackItems());
     }
 
     public function validItems(): array
@@ -38,7 +38,7 @@ class BagKataTest extends TestCase
         $bagKata->add('Leather');
         $bagKata->add('Axe');
 
-        self::assertEquals(['Leather', 'Axe'], $bagKata->backpack());
+        self::assertEquals(['Leather', 'Axe'], $bagKata->backpackItems());
     }
 
     /** @test */
@@ -77,6 +77,6 @@ class BagKataTest extends TestCase
 
         $bagKata->organize();
 
-        self::assertEquals(['Axe', 'Leather'], $bagKata->backpack());
+        self::assertEquals(['Axe', 'Leather'], $bagKata->backpackItems());
     }
 }

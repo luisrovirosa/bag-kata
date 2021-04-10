@@ -28,7 +28,7 @@ class BagKata
         throw new FullBackException();
     }
 
-    public function backpack(): array
+    public function backpackItems(): array
     {
         return $this->bags[0]->items();
     }
