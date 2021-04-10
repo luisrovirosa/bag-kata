@@ -133,6 +133,20 @@ class BagKataTest extends TestCase
         ];
     }
 
+
+    /** @test */
+    public function items_are_not_organized_when_are_placed(): void
+    {
+        $this->markTestIncomplete('Not yet');
+        $bag = Bag::categoryBag('Clothes');
+        $bagKata = new BagKata($bag);
+
+        $bagKata->add('Leather');
+
+        self::assertEquals(['Leather'], $bagKata->backpackItems());
+        self::assertEmpty($bag->items());
+    }
+
     /** @test */
     public function extra_bags_can_contain_up_to_4_items(): void
     {
