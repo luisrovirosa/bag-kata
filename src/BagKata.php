@@ -52,11 +52,22 @@ class BagKata
 
     private function findBag(string $item): ?Bag
     {
+        return $this->findPreferredBag($item) ?? $this->findNotFullBag();
+    }
+
+    private function findPreferredBag(string $item): ?Bag
+    {
         foreach ($this->bags as $bag) {
             if ($bag->isPreferredItem($item) && !$bag->isFull()) {
                 return $bag;
             }
         }
+
+        return null;
+    }
+
+    private function findNotFullBag(): ?Bag
+    {
         foreach ($this->bags as $bag) {
             if (!$bag->isFull()) {
                 return $bag;
